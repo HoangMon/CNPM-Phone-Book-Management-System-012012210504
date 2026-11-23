@@ -1,78 +1,138 @@
-#include "../include/Contact.h"
-#include <iostream>
-#include <iomanip>
+#include "Contact.h"
+using namespace std;
 
-Contact::Contact() {
-    contactID = 0;
-    favorite = false;
+// =====================================================
+// KHỞI TẠO (CONSTRUCTORS)
+// =====================================================
+
+// Constructor mặc định - Khởi tạo giá trị ban đầu cho liên hệ
+Contact::Contact()
+{
+    id = 0;
+    account_id = 0;
+    group_id = 0;
+    name = "";
+    phone = "";
+    email = "";
+    address = "";
+    isFavorite = false;
 }
 
-Contact::Contact(int id, string name, string phone, string mail, string addr, bool fav) {
-    contactID = id;
-    fullName = name;
-    phoneNumber = phone;
-    email = mail;
-    address = addr;
-    favorite = fav;
+// Constructor đầy đủ tham số - Khởi tạo liên hệ với thông tin chi tiết
+Contact::Contact(int contact_id, int account_id, int group_id,
+    string name, string phone, string email,
+    string address, bool isFavorite)
+{
+    this->id = contact_id;
+    this->account_id = account_id;
+    this->group_id = group_id;
+    this->name = name;
+    this->phone = phone;
+    this->email = email;
+    this->address = address;
+    this->isFavorite = isFavorite;
 }
 
-int Contact::getContactID() const {
-    return contactID;
+// =====================================================
+// CÁC HÀM LẤY THÔNG TIN (GETTERS)
+// =====================================================
+
+// Lấy ID liên hệ
+int Contact::getContactId() const
+{
+    return id;
 }
 
-string Contact::getFullName() const {
-    return fullName;
+// Lấy ID tài khoản sở hữu liên hệ
+int Contact::getAccountId() const
+{
+    return account_id;
 }
 
-string Contact::getPhoneNumber() const {
-    return phoneNumber;
+// Lấy ID nhóm liên hệ
+int Contact::getGroupId() const
+{
+    return group_id;
 }
 
-string Contact::getEmail() const {
+// Lấy tên liên hệ
+string Contact::getName() const
+{
+    return name;
+}
+
+// Lấy số điện thoại
+string Contact::getPhone() const
+{
+    return phone;
+}
+
+// Lấy email liên hệ
+string Contact::getEmail() const
+{
     return email;
 }
 
-string Contact::getAddress() const {
+// Lấy địa chỉ liên hệ
+string Contact::getAddress() const
+{
     return address;
 }
 
-bool Contact::isFavorite() const {
-    return favorite;
+// Kiểm tra liên hệ có thuộc danh sách yêu thích hay không
+bool Contact::getIsFavorite() const
+{
+    return isFavorite;
 }
 
-void Contact::setContactID(int id) {
-    contactID = id;
+// =====================================================
+// CÁC HÀM CẬP NHẬT THÔNG TIN (SETTERS)
+// =====================================================
+
+// Cập nhật ID liên hệ
+void Contact::setContactId(int contact_id)
+{
+    this->id = contact_id;
 }
 
-void Contact::setFullName(string name) {
-    fullName = name;
+// Cập nhật ID tài khoản sở hữu
+void Contact::setAccountId(int account_id)
+{
+    this->account_id = account_id;
 }
 
-void Contact::setPhoneNumber(string phone) {
-    phoneNumber = phone;
+// Cập nhật ID nhóm
+void Contact::setGroupId(int group_id)
+{
+    this->group_id = group_id;
 }
 
-void Contact::setEmail(string mail) {
-    email = mail;
+// Cập nhật tên liên hệ
+void Contact::setName(string name)
+{
+    this->name = name;
 }
 
-void Contact::setAddress(string addr) {
-    address = addr;
+// Cập nhật số điện thoại
+void Contact::setPhone(string phone)
+{
+    this->phone = phone;
 }
 
-void Contact::setFavorite(bool fav) {
-    favorite = fav;
+// Cập nhật email liên hệ
+void Contact::setEmail(string email)
+{
+    this->email = email;
 }
 
-void Contact::toggleFavorite() {
-    favorite = !favorite;
+// Cập nhật địa chỉ liên hệ
+void Contact::setAddress(string address)
+{
+    this->address = address;
 }
 
-void Contact::display() const {
-    cout << left << setw(5) << contactID
-         << setw(6) << (favorite ? "[*]" : "[ ]")
-         << setw(22) << fullName
-         << setw(15) << phoneNumber
-         << setw(25) << (email.empty() ? "N/A" : email)
-         << (address.empty() ? "N/A" : address) << "\n";
+// Cập nhật trạng thái yêu thích
+void Contact::setIsFavorite(bool isFavorite)
+{
+    this->isFavorite = isFavorite;
 }
